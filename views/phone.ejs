@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Phone Book</title>
+</head>
+<body>
+    
+<div class="box" id="heading">
+        <h1><%= date %></h1>
+    </div>
+    <div class="box">
+        <table>
+        <% for(var i=0; i < phoneItems.length; i++) { %>
+            <tr><td><form action="/phone/delete" method="POST">
+            <div class="item">
+                <input name="checkbox" value="<%= phoneItems[i].id %>" type="checkbox" onchange="this.form.submit()">
+            </div>
+            </form></td>
+                <td><%= phoneItems[i].name %></td>
+                <td><%= phoneItems[i].phone %></td>
+    
+    </tr>
+        <% } %>
+        </table>
+        <table><tr>
+        <form action="/phone" class="class" method="POST">
+            <td><input type="text" name="name" placeholder="Name" autocomplete="off"></td>
+            <td><input type="text" name="phone" placeholder="Phone number" autocomplete="off"></td>
+            <td><button type="submit">+</button></td>
+        </form>
+        </tr></table>
+    </div>
+
+</body>
+</html>
